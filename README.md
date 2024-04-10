@@ -30,3 +30,7 @@ The images are either svg or png files reduced in size to keep the overall proje
 **Link to project video**
 
 https://drive.google.com/file/d/1r_KiMQ4UefFxtJ8WsCIrmUA5sivhlsUT/view?usp=sharing
+
+**Link to GitHub**
+
+https://parnika006.github.io/se_project_aroundtheus/
