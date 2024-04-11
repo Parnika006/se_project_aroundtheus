@@ -10,7 +10,7 @@
 .profile__info {
   display: grid;
   grid-template-areas: "title button" "description description";
-  grid-template-columns: minmax(auto, auto-fit) auto;
+  grid-template-columns: minmax(auto, auto) auto;
   align-items: baseline;
 }
 
@@ -79,7 +79,6 @@
 
 @media screen and (max-width: 768px) {
   .profile__info {
-    grid-template-columns: minmax(auto, auto-fit) auto;
     align-items: center;
   }
 
