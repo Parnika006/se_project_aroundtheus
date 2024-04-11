@@ -3,8 +3,8 @@
   border-bottom: 1px solid rgb(84, 84, 84, 0.7);
   max-width: 880px;
   min-height: 74px;
+  box-sizing: border-box;
   padding-left: 20px;
-  padding-right: 20px;
 }
 
 .header__logo {
@@ -17,6 +17,7 @@
     min-height: 56px;
     margin-top: 28px;
     max-width: 100%;
+    padding-left: 27px;
   }
 
   .header__logo {
