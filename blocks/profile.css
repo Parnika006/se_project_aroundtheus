@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   padding-top: 40px;
-  padding-left: 20px;
   box-sizing: border-box;
 }
 
@@ -48,7 +47,7 @@
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 42px;
   line-height: 1.15;
-  font-weight: 400;
+  font-weight: 500;
   grid-area: title;
   margin: 0;
   text-overflow: ellipsis;
@@ -79,6 +78,12 @@
   margin-right: 24px;
 }
 
+@media screen and (max-width: 900px) {
+  .profile {
+    padding-left: 20px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .profile__info {
     align-items: center;
@@ -104,6 +109,7 @@
 @media screen and (max-width: 560px) {
   .profile {
     flex-direction: column;
+    padding: 0;
   }
 
   .profile__title {
@@ -124,9 +130,15 @@
     padding-top: 14px;
   }
 
+  .profile__image {
+    margin-top: 42px;
+    margin-right: 0;
+  }
+
   .profile__add-button {
     margin: 0;
     width: 282px;
     margin-top: 36px;
+    padding: 0;
   }
 }
