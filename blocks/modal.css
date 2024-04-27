@@ -102,12 +102,14 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  padding: 0;
 }
 
 @media screen and (max-width: 600px) {
   .modal__container {
     max-width: 282px;
     max-height: 322px;
+    padding: 25px 22px 25px 22px;
   }
 
   .modal__close {
@@ -119,6 +121,8 @@
 
   .modal__heading {
     margin-bottom: 75px;
+    font-size: 18px;
+    line-height: 22px;
   }
 
   .modal__button {
