@@ -61,7 +61,7 @@
   gap: 30px;
 }
 
-.modal__title {
+.modal__input {
   border: 0;
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -75,20 +75,6 @@
   padding-bottom: 12px;
 }
 
-.modal__description {
-  max-width: 358px;
-  border: 0;
-  color: #000;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 358px;
-  max-height: 27px;
-  padding-bottom: 12px;
-}
 
 .modal__button {
   border-radius: 2px;
