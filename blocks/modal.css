@@ -6,15 +6,20 @@
   left: 0;
   right: 0;
   z-index: 99;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 19px;
   margin: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 .modal_opened {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s linear;
 }
 
 .modal__container {
@@ -43,6 +48,7 @@
   height: 40px;
   padding: 0;
   cursor: pointer;
+  z-index: 2;
 }
 
 .modal__heading {
@@ -75,7 +81,6 @@
   padding-bottom: 12px;
 }
 
-
 .modal__button {
   border-radius: 2px;
   color: #fff;
@@ -89,6 +94,46 @@
   font-size: 18px;
   line-height: 22px;
   padding: 0;
+}
+
+.modal__image-container {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.modal__close-card-image {
+  background-color: transparent;
+  background-image: url(../images/close.svg);
+  background-repeat: no-repeat;
+  border: none;
+  background-size: contain;
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.preview_image-modal {
+  max-width: 75vw;
+  max-height: 75vh;
+  z-index: 1;
+}
+
+.modal__picture-caption {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  color: #ffff;
+  margin: 0;
+  position: absolute;
+  padding-top: 10px;
+  z-index: 3;
 }
 
 @media screen and (max-width: 600px) {
