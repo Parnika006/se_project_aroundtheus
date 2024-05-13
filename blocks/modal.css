@@ -102,22 +102,6 @@
   max-height: 100%;
 }
 
-.modal__close-card-image {
-  background-color: transparent;
-  background-image: url(../images/close.svg);
-  background-repeat: no-repeat;
-  border: none;
-  background-size: contain;
-  position: absolute;
-  top: -45px;
-  right: -45px;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  cursor: pointer;
-  z-index: 2;
-}
-
 .preview_image-modal {
   max-width: 75vw;
   max-height: 75vh;
@@ -162,12 +146,5 @@
     height: 46px;
     font-size: 14px;
     line-height: 17px;
-  }
-
-  .modal__close-card-image {
-    width: 30px;
-    height: 30px;
-    top: -35px;
-    right: -35px;
   }
 }

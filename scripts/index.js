@@ -34,32 +34,27 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-const profileEditForm = profileEditModal.querySelector(".modal__form");
+const profileEditForm = document.forms["profile-form"];
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addNewCardModal = document.querySelector("#add-card-modal");
 const newCardCloseButton = addNewCardModal.querySelector(".modal__close");
-const addCardFormElement = addNewCardModal.querySelector(".modal__form");
+const addCardFormElement = document.forms["add-card-form"];
 const cardTitleInput = addCardFormElement.querySelector("#card-title-input");
 const cardUrlInput = addCardFormElement.querySelector("#card-url-input");
 const cardImageModal = document.querySelector("#card-image");
-const cardImageCloseButton = cardImageModal.querySelector(
-  ".modal__close-card-image"
-);
+const cardImageCloseButton = cardImageModal.querySelector(".modal__close");
 const cardImageCaption = cardImageModal.querySelector(
   ".modal__picture-caption"
 );
+const imageElement = document.querySelector(".preview_image-modal");
 
 // functions
 
 function showPreviewImage({ name, link }) {
   openModal(cardImageModal);
-  const cardImageCaption = cardImageModal.querySelector(
-    ".modal__picture-caption"
-  );
-  const imageElement = document.querySelector(".preview_image-modal");
   imageElement.src = link;
   imageElement.alt = name;
   cardImageCaption.textContent = name;
@@ -95,6 +90,7 @@ function openModal(modaL) {
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
+
 function renderCards(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
   wrapper.prepend(cardElement);
@@ -113,6 +109,7 @@ function handleAddCardFormSubmit(e) {
   const link = cardUrlInput.value;
   renderCards({ name, link }, cardListEl);
   closePopup(addNewCardModal);
+  e.target.reset();
 }
 
 profileEditButton.addEventListener("click", () => {
