@@ -88,7 +88,6 @@
   width: 100%;
   max-width: 358px;
   height: 50px;
-  margin-top: 18px;
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -118,6 +117,34 @@
   position: absolute;
   padding-top: 10px;
   z-index: 3;
+}
+
+.modal__button_disabled {
+  opacity: 20%;
+}
+
+.modal__label {
+  position: relative;
+  height: 17px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.modal__error {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border: 1px;
+  color: #ff0000;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+}
+
+.modal__error_visible {
+  opacity: 1;
 }
 
 @media screen and (max-width: 600px) {
