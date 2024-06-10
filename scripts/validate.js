@@ -97,7 +97,10 @@ function isModalOpen() {
 function isClickOutsideModal(event) {
   const modalOpened = document.querySelector(".modal_opened");
 
-  const modalContainer = modalOpened.querySelector(".modal__container");
+  const modalContainer = modalOpened.querySelector(".js-modal__container");
+  if (modalContainer === null) {
+    return true;
+  }
 
   return !modalContainer.contains(event.target);
 }
