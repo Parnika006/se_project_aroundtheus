@@ -35,7 +35,7 @@
   max-height: 330px;
 }
 
-.modal__close {
+.modal__close-button {
   background-color: transparent;
   background-image: url(../images/close.svg);
   background-repeat: no-repeat;
@@ -154,7 +154,7 @@
     padding: 25px 22px 25px 22px;
   }
 
-  .modal__close {
+  .modal__close-button {
     width: 26px;
     height: 26px;
     right: 2px;

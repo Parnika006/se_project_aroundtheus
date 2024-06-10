@@ -43,7 +43,7 @@ function toggleButtonState(inputEls, submitButton, options) {
 
 function setEventListeners(formEl, options) {
   const inputEls = Array.from(formEl.querySelectorAll(options.inputSelector));
-  const submitButton = formEl.querySelector(".modal__button");
+  const submitButton = formEl.querySelector(options.submitButtonSelector);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, options);
@@ -72,45 +72,3 @@ const config = {
 };
 
 enableValidation(config);
-
-function initModal() {
-  document.addEventListener("click", function (event) {
-    if (isModalOpen() && isClickOutsideModal(event)) {
-      closeModal();
-    }
-  });
-  document.addEventListener("keydown", function (event) {
-    if (isModalOpen() && event.key === "Escape") {
-      closeModal();
-    }
-  });
-}
-
-function isModalOpen() {
-  const modalOpened = document.querySelector(".modal_opened");
-  if (modalOpened === null) {
-    return false;
-  }
-  return modalOpened.classList.contains("modal_opened");
-}
-
-function isClickOutsideModal(event) {
-  const modalOpened = document.querySelector(".modal_opened");
-
-  const modalContainer = modalOpened.querySelector(".js-modal__container");
-  if (modalContainer === null) {
-    return true;
-  }
-
-  return !modalContainer.contains(event.target);
-}
-
-function closeModal() {
-  const modalOpened = document.querySelector(".modal_opened");
-
-  if (isModalOpen()) {
-    modalOpened.classList.remove("modal_opened");
-  }
-}
-
-initModal();
