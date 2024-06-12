@@ -79,7 +79,7 @@ function getCardElement(cardData) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  checkModalForClick();
+  checkModalForClick(); //by removing this line, the function is not called anywhere hence this feature stops working completely.
   document.addEventListener("keydown", checkModalForEscape);
 }
 
@@ -148,8 +148,8 @@ function checkModalForClick() {
 }
 
 function checkModalForEscape(event) {
-  const modal = document.querySelector(".modal_opened");
   if (isModalOpen() && event.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
     closePopup(modal);
   }
 }
@@ -160,13 +160,4 @@ function isModalOpen() {
     return false;
   }
   return modalOpened.classList.contains("modal_opened");
-}
-
-function isClickOutsideModal(event) {
-  const modalOpened = document.querySelector(".modal_opened");
-  const modalContainer = modalOpened.querySelector(".js-modal__container");
-  if (modalContainer === null) {
-    return true;
-  }
-  return !modalContainer.contains(event.target);
 }
