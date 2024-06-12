@@ -79,7 +79,6 @@ function getCardElement(cardData) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  checkModalForClick(); //by removing this line, the function is not called anywhere hence this feature stops working completely.
   document.addEventListener("keydown", checkModalForEscape);
 }
 
@@ -134,18 +133,16 @@ addNewCardButton.addEventListener("click", (e) => {
 
 initialCards.forEach((cardData) => renderCards(cardData, cardListEl));
 
-function checkModalForClick() {
-  const modals = document.querySelectorAll(".modal");
-  modals.forEach((modal) => {
-    modal.addEventListener("mousedown", (evt) => {
-      if (evt.target.classList.contains("modal_opened")) {
-        closePopup(modal);
-      } else if (evt.target.classList.contains("modal__close-button")) {
-        closePopup(modal);
-      }
-    });
+const modals = document.querySelectorAll(".modal");
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("modal_opened")) {
+      closePopup(modal);
+    } else if (evt.target.classList.contains("modal__close-button")) {
+      closePopup(modal);
+    }
   });
-}
+});
 
 function checkModalForEscape(event) {
   if (isModalOpen() && event.key === "Escape") {
