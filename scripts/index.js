@@ -145,16 +145,10 @@ modals.forEach((modal) => {
 });
 
 function checkModalForEscape(event) {
-  if (isModalOpen() && event.key === "Escape") {
+  if (event.key === "Escape") {
     const modal = document.querySelector(".modal_opened");
-    closePopup(modal);
+    if (modal) {
+      closePopup(modal);
+    }
   }
-}
-
-function isModalOpen() {
-  const modalOpened = document.querySelector(".modal_opened");
-  if (modalOpened === null) {
-    return false;
-  }
-  return modalOpened.classList.contains("modal_opened");
 }
