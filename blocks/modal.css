@@ -52,6 +52,7 @@
 
 .modal__close-button:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .modal__heading {
@@ -100,6 +101,12 @@
 
 .modal__button:hover {
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.modal__button_disabled:hover {
+  opacity: 0.2;
+  cursor: default;
 }
 
 .modal__image-container {
