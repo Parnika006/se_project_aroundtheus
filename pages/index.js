@@ -86,9 +86,8 @@ function closePopup(modal) {
   document.removeEventListener("keydown", checkModalForEscape);
 }
 
-function renderCards(data, wrapper) {
+function renderCard(data, wrapper) {
   const card = new Card(data, cardSelector, showPreviewImage);
-
   wrapper.prepend(card.getView());
 }
 
@@ -103,13 +102,13 @@ function handleAddCardFormSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  renderCards({ name, link }, cardListEl);
+  renderCard({ name, link }, cardListEl);
   closePopup(addNewCardModal);
   e.target.reset();
+  addFormValidator.disableButton();
 }
 
 function showPreviewImage(card) {
-  //e.stopPropagation();
   openModal(cardImageModal);
   imageElement.src = card._link;
   imageElement.alt = card._name;
@@ -126,12 +125,11 @@ profileEditButton.addEventListener("click", (e) => {
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
-addNewCardButton.addEventListener("click", (e) => {
-  e.stopPropagation();
+addNewCardButton.addEventListener("click", () => {
   openModal(addNewCardModal);
 });
 
-initialCards.forEach((cardData) => renderCards(cardData, cardListEl));
+initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 const modals = document.querySelectorAll(".modal");
 modals.forEach((modal) => {

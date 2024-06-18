@@ -12,21 +12,19 @@ class Card {
       this._handleImageClick(this)
     );
 
-    this._deleteButton.addEventListener("click", () =>
-      this._handleDeleteCard()
-    );
+    this._deleteButton.addEventListener("click", this._handleDeleteCard);
 
-    this._likeButton.addEventListener("click", () => this._handleLikeIcon());
+    this._likeButton.addEventListener("click", this._handleLikeIcon);
   }
 
-  _handleLikeIcon() {
+  _handleLikeIcon = () => {
     this._likeButton.classList.toggle("card__like-button_active");
-  }
+  };
 
-  _handleDeleteCard() {
-    this._element.remove;
+  _handleDeleteCard = () => {
+    this._element.remove();
     this._element = null;
-  }
+  };
 
   _getTemplate() {
     return document

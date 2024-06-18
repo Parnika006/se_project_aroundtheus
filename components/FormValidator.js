@@ -22,16 +22,16 @@ class FormValidator {
     errorMessageEl.classList.remove(this._errorClass);
   }
 
-  _toggleButtonState(inputEls, submitButton) {
-    if (!this._hasValidState(inputEls)) {
-      this.disableButton(submitButton);
+  _toggleButtonState() {
+    if (!this._hasValidState()) {
+      this.disableButton(this._submitButton);
       return;
     }
-    this.enableButton(submitButton);
+    this.enableButton(this._submitButton);
   }
 
-  _hasValidState(inputEls) {
-    return inputEls.every((inputEl) => inputEl.validity.valid);
+  _hasValidState() {
+    return this._inputEls.every((inputEl) => inputEl.validity.valid);
   }
 
   _checkInputValidity(inputEl) {
@@ -60,14 +60,14 @@ class FormValidator {
     });
     this._setEventListeners();
   }
-  enableButton(button) {
-    button.removeAttribute("disabled");
-    button.classList.remove(this._inactiveButtonClass);
+  enableButton() {
+    this._submitButton.removeAttribute("disabled");
+    this._submitButton.classList.remove(this._inactiveButtonClass);
   }
 
-  disableButton(button) {
-    button.setAttribute("disabled", true);
-    button.classList.add(this._inactiveButtonClass);
+  disableButton() {
+    this._submitButton.setAttribute("disabled", true);
+    this._submitButton.classList.add(this._inactiveButtonClass);
   }
 }
 
