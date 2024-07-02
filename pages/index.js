@@ -1,32 +1,10 @@
+import { initialCards, validationSettings } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
-
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -55,13 +33,6 @@ const cardSelector = "#card-template";
 
 /* validation */
 
-const validationSettings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
 const profileEditForm = document.forms["profile-form"];
 
 const editFormValidator = new FormValidator(
@@ -76,7 +47,7 @@ const addFormValidator = new FormValidator(
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 
-function openModal(modal) {
+/* function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", checkModalForEscape);
 }
@@ -84,14 +55,71 @@ function openModal(modal) {
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", checkModalForEscape);
-}
+} */
 
 function renderCard(data, wrapper) {
   const card = new Card(data, cardSelector, showPreviewImage);
-  wrapper.prepend(card.getView());
+
+  section.addItem(card.getView());
 }
 
-function handleProfileEditSubmit(e) {
+const section = new Section(
+  {
+    items: initialCards,
+    renderer: renderCard,
+  },
+  ".cards__list"
+);
+
+section.renderItems();
+
+const popupWithImage = new PopupWithImage(".preview_image-modal");
+popupWithImage.setEventListeners();
+
+const newCardForm = new PopupWithForm(
+  "#add-card-form",
+  handleAddCardFormSubmit
+);
+console.log(newCardForm);
+newCardForm.setEventListeners();
+
+const editCardForm = new PopupWithForm(
+  "#profile-form",
+  handleProfileEditSubmit
+);
+editCardForm.setEventListeners();
+
+const userInfo = new UserInfo({
+  titleSelector: ".profile__title",
+  descriptionSelector: ".profile__description",
+});
+
+function handleProfileEditSubmit(data) {
+  userInfo.setUserInfo(data);
+  editCardForm.close();
+}
+
+function handleAddCardFormSubmit(cardData) {
+  renderCard({ name: cardData.title, link: cardData.Url }, cardListEl);
+  addCardFormElement.reset();
+  newCardForm.close();
+}
+
+function showPreviewImage(data) {
+  popupWithImage.open(data);
+}
+
+profileEditButton.addEventListener("click", () => {
+  const cardData = userInfo.getUserInfo();
+  profileTitleInput.value = cardData.title;
+  profileDescriptionInput.value = cardData.description;
+  e.stopPropagation();
+  editCardForm.open();
+});
+
+addNewCardButton.addEventListener("click", () => newCardForm.open());
+
+/* function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
@@ -140,13 +168,13 @@ modals.forEach((modal) => {
       closePopup(modal);
     }
   });
-});
+});  */
 
-function checkModalForEscape(event) {
+/* function checkModalForEscape(event) {
   if (event.key === "Escape") {
     const modal = document.querySelector(".modal_opened");
     if (modal) {
       closePopup(modal);
     }
-  }
-}
+  } 
+}*/
