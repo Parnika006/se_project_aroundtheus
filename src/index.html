@@ -10,22 +10,24 @@
     <meta name="description" content="around the US" />
     <meta name="keywords" content="USA, photos" />
     <title>Around the US</title>
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
 
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/Vector.svg"
+          src="<%=require('./images/Vector.svg')%>"
           alt="Around the US logo"
           class="header__logo"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img src="./images/Avatar.png" alt="avatar" class="profile__image" />
+          <img
+            src="<%=require('./images/Avatar.png')%>"
+            alt="avatar"
+            class="profile__image"
+          />
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -138,7 +140,5 @@
         </div>
       </li>
     </template>
-
-    <script src="./pages/index.js" type="module"></script>
   </body>
 </html>
