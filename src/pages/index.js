@@ -85,10 +85,9 @@ function showPreviewImage(data) {
 }
 
 profileEditButton.addEventListener("click", (e) => {
-  const cardData = userInfo.getUserInfo();
-  profileTitleInput.value = cardData.title;
-  profileDescriptionInput.value = cardData.description;
-  e.stopPropagation();
+  const userData = userInfo.getUserInfo();
+  profileTitleInput.value = userData.title;
+  profileDescriptionInput.value = userData.description;
   editCardModal.open();
 });
 
