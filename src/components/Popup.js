@@ -17,11 +17,6 @@ export default class Popup {
     }
   };
 
-  /* _handleEscClose(evt) {
-    if (evt.key === "Escape") {
-      this.close();
-    }
-  } */
   setEventListeners() {
     this._popupElement.addEventListener("mousedown", (evt) => {
       if (evt.target.classList.contains("modal_opened")) {

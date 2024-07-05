@@ -37,8 +37,9 @@ class Card {
     this._likeButton = this._element.querySelector(".card__like-button");
     this._deleteButton = this._element.querySelector(".card__delete-button");
     this._cardImageEl = this._element.querySelector(".card__image");
-    this._cardImageEl.style.backgroundImage = `url(${this._link})`;
     this._cardImageEl.src = this._link;
+
+    this._cardImageEl.alt = this._name;
     this._element.querySelector(".card__title").textContent = this._name;
     this._setEventListeners();
     return this._element;

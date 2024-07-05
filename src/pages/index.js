@@ -33,8 +33,8 @@ const addFormValidator = new FormValidator(
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 
-function renderCard(data) {
-  const card = new Card(data, cardSelector, showPreviewImage);
+function renderCard(cardData) {
+  const card = new Card(cardData, cardSelector, showPreviewImage);
 
   section.addItem(card.getView());
 }
@@ -75,7 +75,7 @@ function handleProfileEditSubmit(data) {
 }
 
 function handleAddCardFormSubmit(cardData) {
-  renderCard({ name: cardData.title, link: cardData.Url }, cardListEl);
+  renderCard({ name: cardData.title, link: cardData.url }, cardListEl);
   addCardFormElement.reset();
   newCardModal.close();
 }
