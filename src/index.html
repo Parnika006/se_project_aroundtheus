@@ -140,5 +140,42 @@
         </div>
       </li>
     </template>
+
+    <div class="modal" id="delete-picture-confirmation">
+      <div class="modal__container js-modal__container">
+        <button class="modal__close-button"></button>
+        <p class="modal__heading">Are you sure?</p>
+
+        <span
+          class="modal__error"
+          id="delete-picture-confirmation-error"
+        ></span>
+
+        <button class="modal__button">Yes</button>
+      </div>
+    </div>
+
+    <div class="modal" id="change-profile-picture-modal">
+      <div class="modal__container js-modal__container">
+        <button class="modal__close-button"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" id="change-profile-picture-form">
+          <label class="modal__label">
+            <input
+              type="url"
+              name="picture url"
+              id="picture-url"
+              class="modal__input"
+              placeholder="URL to porifle image"
+              required
+            />
+            <span class="modal__error" id="profile-picture-input-error"></span>
+          </label>
+          <button class="modal__button modal__button_disabled" disabled>
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
