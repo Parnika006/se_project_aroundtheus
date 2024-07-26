@@ -85,7 +85,9 @@
             ></span>
           </label>
 
-          <button class="modal__button">Save</button>
+          <button class="modal__button" id="profile-edit-submit-button">
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -119,7 +121,11 @@
             />
             <span class="modal__error" id="card-url-input-error"></span>
           </label>
-          <button class="modal__button modal__button_disabled" disabled>
+          <button
+            class="modal__button modal__button_disabled"
+            id="add-card-modal-submit-button"
+            disabled
+          >
             Create
           </button>
         </form>
@@ -185,6 +191,7 @@
           </label>
           <button
             class="modal__button modal__button_disabled"
+            id="change-profile-picture-submit-button"
             disabled
             type="submit"
           >

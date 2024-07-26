@@ -29,6 +29,15 @@ const changeProfilePictureModal = document.forms["change-profile-picture-form"];
 const profileImage = document.querySelector(".profile__image");
 const profileEditForm = document.forms["profile-form"];
 const deleteCardForm = document.forms["delete-card-form"];
+const profileEditSubmitButton = document.querySelector(
+  "#profile-edit-submit-button"
+);
+const addCardModalSubmitButton = document.querySelector(
+  "#add-card-modal-submit-button"
+);
+const changeProfilePictureSubmitButton = document.querySelector(
+  "#change-profile-picture-submit-button"
+);
 
 const userInfo = new UserInfo({
   titleSelector: ".profile__title",
@@ -137,21 +146,26 @@ function renderCard(cardData) {
 }
 
 function handleAddCardFormSubmit({ title, url }) {
-  api.postCard({ name: title, link: url }).then((cardData) => {
-    renderCard(cardData, cardListEl);
-    addCardFormElement.reset();
-    newCardModal.close();
-  });
+  addCardModalSubmitButton.innerHTML = "Saving...";
+  api
+    .postCard({ name: title, link: url })
+    .then((cardData) => {
+      renderCard(cardData, cardListEl);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      addCardFormElement.reset();
+      newCardModal.close();
+      addCardModalSubmitButton.innerHTML = "Create";
+    });
 }
 
 function handleDeleteCardPopup(card) {
   deleteCardModal.open(card);
 }
 
-/* function handleDeleteCard(card) {
-  card._element.remove();
-}
- */
 function handleDeleteCard(card) {
   api
     .deleteCard(card.getCardId())
@@ -191,18 +205,36 @@ function showPreviewImage(data) {
 }
 
 function handleProfileEditSubmit({ title, description }) {
-  api.editUserInfo({ title, description }).then(() => {
-    userInfo.setUserInfo({ title, description });
-    editCardModal.close();
-  });
+  profileEditSubmitButton.innerHTML = "Saving...";
+  api
+    .editUserInfo({ title, description })
+    .then(() => {
+      userInfo.setUserInfo({ title, description });
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      editCardModal.close();
+      profileEditSubmitButton.innerHTML = "Save";
+    });
 }
 
 function handleChangeProfilePictureSubmit({ picture_url }) {
-  api.editUserProfilePicture({ link: picture_url }).then(() => {
-    profileImage.src = picture_url;
-    changeProfilePictureModal.reset();
-    profilePictureModal.close();
-  });
+  changeProfilePictureSubmitButton.innerHTML = "Saving...";
+  api
+    .editUserProfilePicture({ link: picture_url })
+    .then(() => {
+      profileImage.src = picture_url;
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      changeProfilePictureModal.reset();
+      profilePictureModal.close();
+      changeProfilePictureSubmitButton.innerHTML = "Save";
+    });
 }
 
 /* validation */
