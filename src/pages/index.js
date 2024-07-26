@@ -59,16 +59,21 @@ const api = new Api({
 
 //api on page loading
 
-api.getInitialCards().then((initialCards) => {
-  section = new Section(
-    {
-      items: initialCards,
-      renderer: renderCard,
-    },
-    ".cards__list"
-  );
-  section.renderItems();
-});
+api
+  .getInitialCards()
+  .then((initialCards) => {
+    section = new Section(
+      {
+        items: initialCards,
+        renderer: renderCard,
+      },
+      ".cards__list"
+    );
+    section.renderItems();
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 api
   .getUserInfo()
@@ -76,7 +81,6 @@ api
     userInfo.setUserInfo(userInfoData);
     userInfo.setUserProfileImage(userInfoData.avatar);
   })
-
   .catch((err) => {
     console.error(err);
   });
@@ -125,6 +129,7 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = userData.title;
   profileDescriptionInput.value = userData.description;
   editCardModal.open();
+  editFormValidator.enableButton();
 });
 
 profileImageEditButton.addEventListener("click", () => {
@@ -147,20 +152,20 @@ function renderCard(cardData) {
 }
 
 function handleAddCardFormSubmit({ title, url }) {
-  addCardModalSubmitButton.innerHTML = "Saving...";
+  addCardModalSubmitButton.textContent = "Saving...";
   api
     .postCard({ name: title, link: url })
     .then((cardData) => {
       renderCard(cardData, cardListEl);
+      newCardModal.close();
+      addCardFormElement.reset();
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(() => {
-      addCardFormElement.reset();
-      addCardModalSubmitButton.classList.add("modal__button_disabled");
-      newCardModal.close();
-      addCardModalSubmitButton.innerHTML = "Create";
+      addFormValidator.disableButton();
+      addCardModalSubmitButton.textContent = "Create";
     });
 }
 
@@ -172,7 +177,7 @@ function handleDeleteCard(card) {
   api
     .deleteCard(card.getCardId())
     .then(() => {
-      card._element.remove();
+      card.element.remove();
       deleteCardModal.close();
     })
     .catch((err) => {
@@ -185,7 +190,7 @@ function handleLikeCard(card) {
     api
       .unlikeCard(card.getCardId())
       .then(() => {
-        card._likeButton.classList.remove("card__like-button_active");
+        card.unlikeCard();
       })
       .catch((err) => {
         console.error(err);
@@ -194,7 +199,7 @@ function handleLikeCard(card) {
     api
       .likeCard(card.getCardId())
       .then(() => {
-        card._likeButton.classList.add("card__like-button_active");
+        card.likeCard();
       })
       .catch((err) => {
         console.error(err);
@@ -207,35 +212,36 @@ function showPreviewImage(data) {
 }
 
 function handleProfileEditSubmit({ title, description }) {
-  profileEditSubmitButton.innerHTML = "Saving...";
+  profileEditSubmitButton.textContent = "Saving...";
   api
     .editUserInfo({ title, description })
     .then(() => {
       userInfo.setUserInfo({ name: title, about: description });
+      editCardModal.close();
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(() => {
-      editCardModal.close();
-      profileEditSubmitButton.innerHTML = "Save";
+      profileEditSubmitButton.textContent = "Save";
     });
 }
 
 function handleChangeProfilePictureSubmit({ picture_url }) {
-  changeProfilePictureSubmitButton.innerHTML = "Saving...";
+  changeProfilePictureSubmitButton.textContent = "Saving...";
   api
     .editUserProfilePicture({ link: picture_url })
     .then(() => {
-      profileImage.src = picture_url;
+      userInfo.setUserProfileImage(picture_url);
+      profilePictureModal.close();
+      changeProfilePictureModal.reset();
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(() => {
-      changeProfilePictureModal.reset();
-      profilePictureModal.close();
-      changeProfilePictureSubmitButton.innerHTML = "Save";
+      changeProfilePictureFormValidator.disableButton();
+      changeProfilePictureSubmitButton.textContent = "Save";
     });
 }
 

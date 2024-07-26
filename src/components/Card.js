@@ -1,5 +1,3 @@
-import { data } from "autoprefixer";
-
 class Card {
   constructor(
     data,
@@ -33,30 +31,26 @@ class Card {
     );
   }
 
-  /*  _handleLikeIcon = () => {
-    this._likeButton.classList.toggle("card__like-button_active");
-  };
- */
-
   _getTemplate() {
     return document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
   }
+
   getView() {
-    this._element = this._getTemplate(); //cloning the element
-    this._likeButton = this._element.querySelector(".card__like-button");
-    this._deleteButton = this._element.querySelector(".card__delete-button");
-    this._cardImageEl = this._element.querySelector(".card__image");
+    this.element = this._getTemplate(); //cloning the element
+    this._likeButton = this.element.querySelector(".card__like-button");
+    this._deleteButton = this.element.querySelector(".card__delete-button");
+    this._cardImageEl = this.element.querySelector(".card__image");
     this._cardImageEl.src = this._link;
     this._cardImageEl.alt = this._name;
-    this._element.querySelector(".card__title").textContent = this._name;
+    this.element.querySelector(".card__title").textContent = this._name;
     if (this._isLiked) {
       this._likeButton.classList.add("card__like-button_active");
     }
     this._setEventListeners();
-    return this._element;
+    return this.element;
   }
 
   isLiked() {
@@ -65,6 +59,14 @@ class Card {
 
   getCardId() {
     return this._id;
+  }
+
+  likeCard() {
+    this._likeButton.classList.add("card__like-button_active");
+  }
+
+  unlikeCard() {
+    this._likeButton.classList.remove("card__like-button_active");
   }
 }
 

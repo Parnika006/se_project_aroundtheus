@@ -49,7 +49,7 @@
     </div>
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container js-modal__container">
-        <button class="modal__close-button"></button>
+        <button class="modal__close-button" type="button"></button>
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form" id="profile-form">
           <label class="modal__label">
@@ -81,7 +81,11 @@
             ></span>
           </label>
 
-          <button class="modal__button" id="profile-edit-submit-button">
+          <button
+            class="modal__button"
+            id="profile-edit-submit-button"
+            type="submit"
+          >
             Save
           </button>
         </form>
@@ -90,7 +94,7 @@
 
     <div class="modal" id="add-card-modal">
       <div class="modal__container js-modal__container">
-        <button class="modal__close-button"></button>
+        <button class="modal__close-button" type="buttton"></button>
         <p class="modal__heading">New Place</p>
         <form class="modal__form" id="add-card-form">
           <label class="modal__label">
@@ -120,6 +124,7 @@
           <button
             class="modal__button modal__button_disabled"
             id="add-card-modal-submit-button"
+            type="submit"
             disabled
           >
             Create
@@ -150,7 +155,7 @@
     <div class="modal" id="delete-card-confirmation">
       <div class="modal__container js-modal__container">
         <form class="modal__form" id="delete-card-form" name="delete-card-form">
-          <button class="modal__close-button"></button>
+          <button class="modal__close-button" type="button"></button>
           <p class="modal__heading">Are you sure?</p>
 
           <span
@@ -171,7 +176,7 @@
 
     <div class="modal" id="change-profile-picture-modal">
       <div class="modal__container js-modal__container">
-        <button class="modal__close-button"></button>
+        <button class="modal__close-button" type="button"></button>
         <p class="modal__heading">Change profile picture</p>
         <form class="modal__form" id="change-profile-picture-form">
           <label class="modal__label">
