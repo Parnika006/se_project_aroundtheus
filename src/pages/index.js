@@ -42,6 +42,7 @@ const changeProfilePictureSubmitButton = document.querySelector(
 const userInfo = new UserInfo({
   titleSelector: ".profile__title",
   descriptionSelector: ".profile__description",
+  profileImageSelector: ".profile__image",
 });
 
 let section;
@@ -59,7 +60,6 @@ const api = new Api({
 //api on page loading
 
 api.getInitialCards().then((initialCards) => {
-  console.log(initialCards);
   section = new Section(
     {
       items: initialCards,
@@ -70,12 +70,13 @@ api.getInitialCards().then((initialCards) => {
   section.renderItems();
 });
 
-//to do -change name to profileinfo
 api
   .getUserInfo()
-  .then((profileInfo) => {
-    userInfo.setUserInfo(profileInfo);
+  .then((userInfoData) => {
+    userInfo.setUserInfo(userInfoData);
+    userInfo.setUserProfileImage(userInfoData.avatar);
   })
+
   .catch((err) => {
     console.error(err);
   });
@@ -157,6 +158,7 @@ function handleAddCardFormSubmit({ title, url }) {
     })
     .finally(() => {
       addCardFormElement.reset();
+      addCardModalSubmitButton.classList.add("modal__button_disabled");
       newCardModal.close();
       addCardModalSubmitButton.innerHTML = "Create";
     });
@@ -209,7 +211,7 @@ function handleProfileEditSubmit({ title, description }) {
   api
     .editUserInfo({ title, description })
     .then(() => {
-      userInfo.setUserInfo({ title, description });
+      userInfo.setUserInfo({ name: title, about: description });
     })
     .catch((err) => {
       console.error(err);

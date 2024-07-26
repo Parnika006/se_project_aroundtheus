@@ -12,6 +12,7 @@ class Card {
     this._link = data.link;
     this._data = data;
     this._id = data._id;
+    this._isLiked = data.isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleLikeCard = handleLikeCard;
@@ -49,9 +50,11 @@ class Card {
     this._deleteButton = this._element.querySelector(".card__delete-button");
     this._cardImageEl = this._element.querySelector(".card__image");
     this._cardImageEl.src = this._link;
-
     this._cardImageEl.alt = this._name;
     this._element.querySelector(".card__title").textContent = this._name;
+    if (this._isLiked) {
+      this._likeButton.classList.add("card__like-button_active");
+    }
     this._setEventListeners();
     return this._element;
   }
