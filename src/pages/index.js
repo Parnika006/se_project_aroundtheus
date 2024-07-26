@@ -159,12 +159,12 @@ function handleAddCardFormSubmit({ title, url }) {
       renderCard(cardData, cardListEl);
       newCardModal.close();
       addCardFormElement.reset();
+      addFormValidator.disableButton();
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(() => {
-      addFormValidator.disableButton();
       addCardModalSubmitButton.textContent = "Create";
     });
 }
@@ -235,12 +235,12 @@ function handleChangeProfilePictureSubmit({ picture_url }) {
       userInfo.setUserProfileImage(picture_url);
       profilePictureModal.close();
       changeProfilePictureModal.reset();
+      changeProfilePictureFormValidator.disableButton();
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(() => {
-      changeProfilePictureFormValidator.disableButton();
       changeProfilePictureSubmitButton.textContent = "Save";
     });
 }
