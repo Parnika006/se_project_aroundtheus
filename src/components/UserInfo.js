@@ -13,8 +13,8 @@ export default class UserInfo {
   }
 
   setUserInfo(userInfoData) {
-    this._profileTitle.innerHTML = userInfoData.name;
-    this._profileDescription.innerHTML = userInfoData.about;
+    this._profileTitle.textContent = userInfoData.name;
+    this._profileDescription.textContent = userInfoData.about;
   }
 
   setUserProfileImage(link) {
