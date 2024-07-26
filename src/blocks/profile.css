@@ -69,6 +69,11 @@
   overflow: hidden;
 }
 
+.profile__image-container {
+  position: relative;
+  opacity: 1;
+}
+
 .profile__image {
   width: 120px;
   height: 120px;
@@ -76,11 +81,32 @@
   object-fit: cover;
   background-position: center;
   margin-right: 24px;
+  z-index: 0;
 }
 
-.profile__image:hover {
+.profile__image-edit-button {
+  background: url(../images/edit_profile_picture.svg) center no-repeat;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  position: absolute;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  opacity: 0;
+}
+
+.profile__image-container:hover {
   opacity: 0.8;
-  background-image: url(../images/edit_profile_picture.svg);
+}
+
+.profile__image-container:hover .profile__image-edit-button {
+  opacity: 100%;
 }
 
 @media screen and (max-width: 900px) {

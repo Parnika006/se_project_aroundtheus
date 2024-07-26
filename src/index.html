@@ -23,11 +23,15 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/Avatar.png')%>"
-            alt="avatar"
-            class="profile__image"
-          />
+          <div class="profile__image-container">
+            <img
+              src="<%=require('./images/Avatar.png')%>"
+              alt="avatar"
+              class="profile__image"
+            />
+            <button type="button" class="profile__image-edit-button"></button>
+          </div>
+
           <div class="profile__info">
             <h1 class="profile__title">Jacques Coustea</h1>
             <button
@@ -141,17 +145,25 @@
       </li>
     </template>
 
-    <div class="modal" id="delete-picture-confirmation">
+    <div class="modal" id="delete-card-confirmation">
       <div class="modal__container js-modal__container">
-        <button class="modal__close-button"></button>
-        <p class="modal__heading">Are you sure?</p>
+        <form class="modal__form" id="delete-card-form" name="delete-card-form">
+          <button class="modal__close-button"></button>
+          <p class="modal__heading">Are you sure?</p>
 
-        <span
-          class="modal__error"
-          id="delete-picture-confirmation-error"
-        ></span>
+          <span
+            class="modal__error"
+            id="delete-picture-confirmation-error"
+          ></span>
 
-        <button class="modal__button">Yes</button>
+          <button
+            class="modal__button"
+            id="delete-confirmation-button"
+            type="submit"
+          >
+            Yes
+          </button>
+        </form>
       </div>
     </div>
 
@@ -163,15 +175,19 @@
           <label class="modal__label">
             <input
               type="url"
-              name="picture url"
+              name="picture_url"
               id="picture-url"
               class="modal__input"
-              placeholder="URL to porifle image"
+              placeholder="URL to profile image"
               required
             />
-            <span class="modal__error" id="profile-picture-input-error"></span>
+            <span class="modal__error" id="picture-url-error"></span>
           </label>
-          <button class="modal__button modal__button_disabled" disabled>
+          <button
+            class="modal__button modal__button_disabled"
+            disabled
+            type="submit"
+          >
             Save
           </button>
         </form>

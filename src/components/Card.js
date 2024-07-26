@@ -1,10 +1,21 @@
+import { data } from "autoprefixer";
+
 class Card {
-  constructor(data, cardSelector, handleImageClick) {
+  constructor(
+    data,
+    cardSelector,
+    handleImageClick,
+    handleLikeCard,
+    handleDeleteCardPopup
+  ) {
     this._name = data.name;
     this._link = data.link;
-
+    this._data = data;
+    this._id = data._id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleLikeCard = handleLikeCard;
+    this._handleDeleteCardPopup = handleDeleteCardPopup;
   }
 
   _setEventListeners() {
@@ -12,19 +23,19 @@ class Card {
       this._handleImageClick(this)
     );
 
-    this._deleteButton.addEventListener("click", this._handleDeleteCard);
+    this._deleteButton.addEventListener("click", () =>
+      this._handleDeleteCardPopup(this)
+    );
 
-    this._likeButton.addEventListener("click", this._handleLikeIcon);
+    this._likeButton.addEventListener("click", () =>
+      this._handleLikeCard(this)
+    );
   }
 
-  _handleLikeIcon = () => {
+  /*  _handleLikeIcon = () => {
     this._likeButton.classList.toggle("card__like-button_active");
   };
-
-  _handleDeleteCard = () => {
-    this._element.remove();
-    this._element = null;
-  };
+ */
 
   _getTemplate() {
     return document
@@ -43,6 +54,14 @@ class Card {
     this._element.querySelector(".card__title").textContent = this._name;
     this._setEventListeners();
     return this._element;
+  }
+
+  isLiked() {
+    return this._likeButton.classList.contains("card__like-button_active");
+  }
+
+  getCardId() {
+    return this._id;
   }
 }
 
