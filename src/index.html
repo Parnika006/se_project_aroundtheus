@@ -23,19 +23,19 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/Avatar.png')%>"
-            alt="avatar"
-            class="profile__image"
-          />
+          <div class="profile__image-container">
+            <img alt="avatar" class="profile__image" />
+            <button type="button" class="profile__image-edit-button"></button>
+          </div>
+
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title"></h1>
             <button
               type="button"
               class="profile__edit-button"
               id="profile-edit-button"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description"></p>
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
@@ -49,7 +49,7 @@
     </div>
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container js-modal__container">
-        <button class="modal__close-button"></button>
+        <button class="modal__close-button" type="button"></button>
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form" id="profile-form">
           <label class="modal__label">
@@ -81,14 +81,20 @@
             ></span>
           </label>
 
-          <button class="modal__button">Save</button>
+          <button
+            class="modal__button"
+            id="profile-edit-submit-button"
+            type="submit"
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
 
     <div class="modal" id="add-card-modal">
       <div class="modal__container js-modal__container">
-        <button class="modal__close-button"></button>
+        <button class="modal__close-button" type="buttton"></button>
         <p class="modal__heading">New Place</p>
         <form class="modal__form" id="add-card-form">
           <label class="modal__label">
@@ -115,7 +121,12 @@
             />
             <span class="modal__error" id="card-url-input-error"></span>
           </label>
-          <button class="modal__button modal__button_disabled" disabled>
+          <button
+            class="modal__button modal__button_disabled"
+            id="add-card-modal-submit-button"
+            type="submit"
+            disabled
+          >
             Create
           </button>
         </form>
@@ -140,5 +151,55 @@
         </div>
       </li>
     </template>
+
+    <div class="modal" id="delete-card-confirmation">
+      <div class="modal__container js-modal__container">
+        <form class="modal__form" id="delete-card-form" name="delete-card-form">
+          <button class="modal__close-button" type="button"></button>
+          <p class="modal__heading">Are you sure?</p>
+
+          <span
+            class="modal__error"
+            id="delete-picture-confirmation-error"
+          ></span>
+
+          <button
+            class="modal__button"
+            id="delete-confirmation-button"
+            type="submit"
+          >
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="change-profile-picture-modal">
+      <div class="modal__container js-modal__container">
+        <button class="modal__close-button" type="button"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" id="change-profile-picture-form">
+          <label class="modal__label">
+            <input
+              type="url"
+              name="picture_url"
+              id="picture-url"
+              class="modal__input"
+              placeholder="URL to profile image"
+              required
+            />
+            <span class="modal__error" id="picture-url-error"></span>
+          </label>
+          <button
+            class="modal__button modal__button_disabled"
+            id="change-profile-picture-submit-button"
+            disabled
+            type="submit"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
