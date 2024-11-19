@@ -8,7 +8,7 @@
 
 **Intro**
 
-This is the third project of the Software Engineering program at TripleTen. It was created using HTML and CSS, based on the design brief. It has a responsive design that changes as per the screen size.
+This is the third project of the Software Engineering program at TripleTen. It was created using HTML and CSS, based on the design brief. It has a responsive design that changes as per the screen size. 
 
 ## Project features
 
