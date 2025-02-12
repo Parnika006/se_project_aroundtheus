@@ -1,36 +1,56 @@
-# Project 3: Around The U.S.
+# 🗺 Around The U.S.  
 
-### Overview
+## 🌟 Overview  
 
-- Intro
-- Figma
-- Images
+**Around The U.S.** is a responsive web project built using **HTML, CSS, and JavaScript**, designed based on a Figma specification. The page adapts to various screen sizes and includes interactive features powered by API integration.  
 
-**Intro**
+## 🔗 Project Links  
+- 🎨 [Figma Design](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
+- 📺 [Project Demo Video](https://drive.google.com/file/d/1r_KiMQ4UefFxtJ8WsCIrmUA5sivhlsUT/view?usp=sharing)  
+- 💻 [Live Project](https://parnika006.github.io/se_project_aroundtheus/)  
+- 🔗 [GitHub Repository](https://github.com/Parnika006/se_project_aroundtheus)  
 
-This is the third project of the Software Engineering program at TripleTen. It was created using HTML and CSS, based on the design brief. It has a responsive design that changes as per the screen size. 
+## 🛠 Tech Stack  
+- HTML5  
+- CSS3 (Flexbox, Grid, Positioning, Animations, Transforms)  
+- JavaScript (ES6+)  
+- API Integration  
 
-## Project features
+## 🎯 Features  
+- 📱 **Responsive Design:** Adjusts seamlessly across mobile, tablet, and desktop screens.  
+- 🖼 **Interactive Elements:** Users can add, like, and delete images dynamically.  
+- 🔗 **API Integration:**  
+  - Fetches and displays user profile data from an external API.  
+  - Allows users to update their profile information.  
+  - Manages cards dynamically via API requests.  
+- 🖌 **BEM Methodology:** Ensures maintainable and scalable CSS.  
 
-- Semantic HTML5
-- Flexbox
-- Positioning
-- Flat BEM file structure
-- Grid
-- CSS animation and transform
+## 🚀 Installation & Setup  
 
-  **Figma**
+### Prerequisites:  
+- A modern web browser  
+- Live server extension (for local testing)  
 
-* [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+### Setup:  
+```sh
+git clone https://github.com/Parnika006/se_project_aroundtheus
+cd se_project_aroundtheus
+```
+Then, open `index.html` in a browser.  
 
-**Images**
+## 📌 Roadmap  
+✅ Implemented API integration for user data  
+✅ Added interactive features (like, delete, add cards)  
+🔜 Enhance UI with additional animations  
+🔜 Improve accessibility features  
 
-The images are either svg or png files reduced in size to keep the overall project size to a reasonable size.
+## 🤝 Contributing  
+Contributions, issues, and feature requests are welcome! Feel free to fork the repository and submit a pull request.  
 
-**Link to project video**
+## 📩 Contact  
+Feel free to connect with me:  
 
-https://drive.google.com/file/d/1r_KiMQ4UefFxtJ8WsCIrmUA5sivhlsUT/view?usp=sharing
+📧 Email: [parnikasingh006@gmail.com](mailto:parnikasingh006@gmail.com)  
+💼 [LinkedIn](https://www.linkedin.com/in/parnikasingh006/)  
+🔗 [GitHub](https://github.com/Parnika006)  
 
-**Link to GitHub**
-
-https://parnika006.github.io/se_project_aroundtheus/
